@@ -1,0 +1,16 @@
+revs
+*panel*
+*.b#*
+*.bin
+*.dri
+*.elf
+*.gpi
+*.hex
+*.lbr
+*.map
+*.pro
+*.o
+*.s
+*.s#*
+*.zip
+*.tar.gz
