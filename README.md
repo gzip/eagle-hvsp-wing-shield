@@ -4,7 +4,9 @@ Ever mess up the fuse bits on an ATtiny device? Or maybe you just want to reclai
 
 # Availability
 
-Currently available in kit form at [Tindie](https://www.tindie.com/products/gzip/avr-attiny-rescue-kit-hvsp-wing-shield-for-arduino/).
+Boards available at [OSH Park](https://www.oshpark.com/shared_projects/0LHEovb9).
+
+Kits available at [Tindie](https://www.tindie.com/products/gzip/avr-attiny-rescue-kit-hvsp-wing-shield-for-arduino/).
 
 <img src="https://d3s5r33r268y59.cloudfront.net/0397/products/thumbs/2014-11-18T19:17:07.531Z-product.jpg.855x570_q85_pad_rcrop.jpg" alt="Photo of circuit" width="655" height="437">
 
