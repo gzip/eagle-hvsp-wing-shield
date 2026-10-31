@@ -1,14 +1,21 @@
 # HVSP Wing Shield
 
-Ever mess up the fuse bits on an ATtiny device? Or maybe you just want to reclaim that reset pin and ditch the bootloader. This kit provides a small Arduino shield that enables you to rescue your 8 pin ATtiny devices from the junk box.
+Ever accidently brick your ATtiny device by setting the fuse bits incorrectly? Or maybe you want to reclaim the reset pin and ditch the bootloader. This kit provides a small Arduino shield that enables you to rescue your 8-pin ATtiny devices from the junk box.
+
+See [Fuse Recovery](FuseRecovery.md) for the various ways that fuses settings can lock out ISP programming.
+
+#### 12V Supply Requirement
+The High Voltage part of HVSP refers to 12V. That's high compared to the ATtiny's typical 5V operation. Typical 12V supplies like wall warts can work as well as generic USB boost converters that can be connected in various ways.
+
+#### Programming from ATtiny
+
+This shield was originally designed to work with an Arduino, but it can now also work with ATtiny devices. See [ATtiny Instructions](attiny/README.md) for more details.
 
 # Availability
 
 Boards available at [OSH Park](https://www.oshpark.com/shared_projects/0LHEovb9).
 
 Kits available at [Tindie](https://www.tindie.com/products/gzip/avr-attiny-rescue-kit-hvsp-wing-shield-for-arduino/).
-
-<img src="https://d3s5r33r268y59.cloudfront.net/0397/products/thumbs/2014-11-18T19:17:07.531Z-product.jpg.855x570_q85_pad_rcrop.jpg" alt="Photo of circuit" width="655" height="437">
 
 # Credit
 

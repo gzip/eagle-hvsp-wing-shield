@@ -5,7 +5,6 @@ revs
 *.dri
 *.elf
 *.gpi
-*.hex
 *.lbr
 *.map
 *.pro
