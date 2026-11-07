@@ -2,19 +2,16 @@
 
 This document details the AVR fuse settings that prevent standard low-voltage In-System Programming (ISP) on 8-pin ATtiny microcontrollers (e.g., ATtiny13, ATtiny25, ATtiny45, ATtiny85), and why High-Voltage Serial Programming (HVSP) is required to recover them.
 
----
 
 ## Background: AVR Fuse Conventions
 
 In AVR architecture, fuse logic is inverted:
-* **`0` = Programmed** (feature is active / enabled)
-* **`1` = Unprogrammed** (feature is inactive / disabled)
+* **`0` = Programmed** (feature is active)
+* **`1` = Unprogrammed** (feature is inactive)
 
-When programming fuses, bit values of `0` turn features on, and `1` turns them off.
+When programming fuses, bit values of `0` active features, and `1` deactives them.
 
----
-
-## Fuses Requiring HVSP Recovery
+## ISP Requirements
 
 Standard ISP programming requires four conditions to communicate with an ATtiny:
 1. The **`RESET` pin (Pin 1 / PB5)** must be pulled low to `0V` to hold the core in reset.
@@ -24,7 +21,7 @@ Standard ISP programming requires four conditions to communicate with an ATtiny:
 
 If any of these conditions are violated, standard ISP becomes impossible.
 
----
+## Fuses Requiring HVSP Recovery
 
 ### 1. `RSTDISBL` (Reset Disable) — *Most Common*
 
@@ -40,8 +37,6 @@ However, standard ISP programmers require pulling Pin 1 to `0V` to enter program
 #### Why HVSP recovers it:
 HVSP applies **~12V** to Pin 1. An internal high-voltage detector overrides the `RSTDISBL` fuse configuration at the hardware level, forcing the device into serial programming mode.
 
----
-
 ### 2. `SPIEN` (Serial Programming Enable)
 
 * **Fuse Register:** `HFUSE` (High Fuse), **Bit 5** (Mask: `$20`)
@@ -56,8 +51,6 @@ While tools like `avrdude` refuse to disable `SPIEN` over ISP as a safety safegu
 #### Why HVSP recovers it:
 HVSP does not use the standard SPI protocol or respect the `SPIEN` bit. The high-voltage entry sequence grants full access to rewrite all fuse registers regardless of `SPIEN`.
 
----
-
 ### 3. `DWEN` (debugWIRE Enable)
 
 * **Fuse Register:** `HFUSE` (High Fuse), **Bit 6** (Mask: `$40`)
@@ -69,8 +62,6 @@ When `DWEN` is enabled (`0`), the reset line is repurposed as an open-drain asyn
 
 #### Why HVSP recovers it:
 The ~12V pulse on Pin 1 immediately overrides debugWIRE and forces the chip into HVSP mode.
-
----
 
 ### 4. Clock Selection Fuses (`CKSEL[3:0]`)
 
@@ -85,8 +76,6 @@ Standard ISP requires a running system clock on the target ATtiny (the ISP clock
 #### Why HVSP recovers it:
 In HVSP mode, the microcontroller's internal clock circuitry is bypassed. The programmer supplies its own clock pulse directly on the **`SCI` pin (Serial Clock Input, Pin 2 / PB3)**, allowing programming regardless of what `CKSEL` is set to.
 
----
-
 ## Summary Reference Table
 
 | Fuse Bit | Register & Bit | Bit Mask | Locked Value | Factory Default | Consequence for Standard ISP |
@@ -95,8 +84,6 @@ In HVSP mode, the microcontroller's internal clock circuitry is bypassed. The pr
 | **`DWEN`** | `HFUSE` [6] | **`$40`** | **`0`** | `1` | Reset line is hijacked by debugWIRE interface. |
 | **`SPIEN`** | `HFUSE` [5] | **`$20`** | **`1`** | `0` | SPI programming interface is completely disabled. |
 | **`CKSEL[3:0]`** | `LFUSE` [3:0] | **`$0F`** | *Missing clock* | `0010` (8MHz RC) | Target has no running clock to process SPI commands. |
-
----
 
 ## Recovery Target Values (Factory Defaults)
 

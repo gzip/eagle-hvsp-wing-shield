@@ -51,44 +51,15 @@ On the physical PCB silkscreen, pins **`8`** and **`12`** are labeled.
 
 The female header on the HVSP shield consists of pins 8 through 14 (arranged from left to right as viewed from the bottom edge of the board):
 
-| Shield Pin | Silkscreen Label | Function | Destination on ATtiny Dev Board | Dev Board Pin |
-| :---: | :---: | :--- | :--- | :--- |
-| **8** | `8` | **Target VCC** | `PB2` | `JP2 Pin 2` |
-| **9** | | **SDI** (Serial Data In) | `PB1` | `JP2 Pin 3` |
-| **10** | | **SII** (Serial Instruction In) | `PB0` | `JP2 Pin 4` |
-| **11** | | **SDO** (Serial Data Out) | *(Unused / Empty)* | *(Leave unconnected)* |
-| **12** | `12` | **SCI** (Serial Clock In) | `PB3` | `JP1 Pin 2` |
-| **13** | | **HV Reset** (12V Transistor Trigger) | `PB4` | `JP1 Pin 3` |
-| **14** | | **GND** | `GND` | `JP1 Pin 4` |
-
----
-
-### ATtiny Dev Board Headers (`JP1` & `JP2`)
-
-The ATtiny Dev Board exposes its pins on two 4-pin headers:
-* **`JP1` (Left side)**: Pin 1 (`PB5`/Reset), Pin 2 (`PB3`), Pin 3 (`PB4`), Pin 4 (`GND`)
-* **`JP2` (Right side)**: Pin 1 (`5V`), Pin 2 (`PB2`), Pin 3 (`PB1`), Pin 4 (`PB0`)
-
----
-
-### Clean 2-Ribbon Connection Scheme
-
-Using two standard **1x3 female-to-female Dupont ribbon cables**, you can wire the setup without crossed individual wires:
-
-#### Ribbon 1: Ground, 12V Trigger & Clock
-* Connects the bottom 3 pins of **`JP1`** (`JP1 Pins 2, 3, 4`) to the right 3 pins of the Shield header (`Pins 12, 13, 14`).
-  * `JP1 Pin 4 (GND)` $\rightarrow$ **Shield Pin 14 (GND)**
-  * `JP1 Pin 3 (PB4)` $\rightarrow$ **Shield Pin 13 (HV_RST)**
-  * `JP1 Pin 2 (PB3)` $\rightarrow$ **Shield Pin 12 (SCI)**
-
-#### Center Gap:
-* **Shield Pin 11 (SDO)** is skipped and left empty.
-
-#### Ribbon 2: Data, Instruction & Switched Power
-* Connects the bottom 3 pins of **`JP2`** (`JP2 Pins 2, 3, 4`) to the left 3 pins of the Shield header (`Pins 8, 9, 10`).
-  * `JP2 Pin 4 (PB0)` $\rightarrow$ **Shield Pin 10 (SII)**
-  * `JP2 Pin 3 (PB1)` $\rightarrow$ **Shield Pin 9 (SDI)**
-  * `JP2 Pin 2 (PB2)` $\rightarrow$ **Shield Pin 8 (Target VCC)**
+| Shield Pin | Silkscreen | Function | ATtiny Pin |
+| :---: | :---: | :--- | :--- |
+| **8** | `8` | **Target VCC** | `PB2` |
+| **9** | | **SDI** (Serial Data In) | `PB1` |
+| **10** | | **SII** (Serial Instruction In) | `PB0` |
+| **11** | | **SDO** (Serial Data Out) | *(Unused)* |
+| **12** | `12` | **SCI** (Serial Clock In) | `PB3` |
+| **13** | | **HV Reset** (12V Transistor Trigger) | `PB4` |
+| **14** | | **GND** | `GND` |
 
 ---
 
