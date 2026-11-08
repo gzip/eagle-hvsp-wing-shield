@@ -1,11 +1,19 @@
 # HVSP Wing Shield
 
-Ever accidently brick your ATtiny device by setting the fuse bits incorrectly? Or maybe you want to reclaim the reset pin and ditch the bootloader. This circuit provides a small Arduino shield that enables you to rescue your 8-pin ATtiny devices from the junk box. There's now also a version for ATtiny so they can rescue eachother.
+Ever accidently brick your ATtiny device by setting the fuse bits incorrectly? Or maybe you want to reclaim the reset pin and ditch the bootloader. High Voltage Serial Programming (HVSP) to the rescue. This circuit provides a small Arduino shield that enables you to rescue your 8-pin ATtiny devices from the junk box. There's also a version for ATtiny so they can rescue eachother.
 
 See [Fuse Recovery](docs/FuseRecovery.md) for the various ways that fuses settings can lock out ISP programming.
 
+<img src="docs/img/populated.jpg" width="218" height="133" alt="Photo of populated board">
+
+<img src="docs/img/front.jpg" width="218" height="133" alt="Photo of board front">
+
+<img src="docs/img/back.jpg" width="218" height="133" alt="Photo of board back">
+
 ## 12V Supply Requirement
-The High Voltage part of HVSP refers to 12V. That's high compared to the ATtiny's typical 5V operation. Typical 12V supplies like wall warts can work as well as generic USB boost converters that can be connected in various ways.
+In High Voltage Serial Programming, "high voltage" refers to 12V, which is well above the ATtiny's typical 5V operation. Common 12V supplies include wall adapters, generic USB boost converters that can be connected in various ways, and standard 12V batteries such as 23A/A23 cells.
+
+<img src="docs/img/12vusb.jpg" width="325" height="100" alt="Photo of board back">
 
 ## Programming from ATtiny
 
@@ -19,7 +27,7 @@ Kits available at [Tindie](https://www.tindie.com/products/gzip/avr-attiny-rescu
 
 # Credit
 
-Original idea and Arduino sketch provided by [Rickety](http://www.rickety.us/2010/03/arduino-avr-high-voltage-serial-programmer/).
+Original Arduino sketch provided by [Rickety](http://www.rickety.us/2010/03/arduino-avr-high-voltage-serial-programmer/). ATtiny version assited by Antigravity.
 
 # License
 
